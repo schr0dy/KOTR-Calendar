@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import Login from './pages/Login'
 import CalendarPage from './pages/Calendar'
@@ -40,7 +40,7 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/login"
@@ -60,7 +60,7 @@ function AppRoutes() {
         />
         <Route path="*" element={<Navigate to="/calendar" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
