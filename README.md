@@ -27,7 +27,7 @@ Team calendar application for **King of the Ring** (MMA).
 
 ```bash
 cp .env.example .env
-# Edit .env with your Firebase values
+# Edit .env with your Firebase values.
 ```
 
 ### 3. Firestore Security Rules
