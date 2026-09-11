@@ -67,7 +67,7 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "OWNER_PLACEHOLDER",
+      "owner": "schr0dy",
       "repo": "KOTR-Calendar"
     }
   }
