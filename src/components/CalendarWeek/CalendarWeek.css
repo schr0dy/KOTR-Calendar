@@ -1,0 +1,221 @@
+.calendar-week {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.week-header {
+  display: grid;
+  grid-template-columns: 56px repeat(7, 1fr);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.week-day-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2) 0 var(--space-3);
+  gap: 4px;
+  border-left: 1px solid var(--border);
+}
+
+.week-day-name {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.week-day-number {
+  font-family: var(--font-label);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* All-day row */
+.week-allday-row {
+  display: grid;
+  grid-template-columns: 56px repeat(7, 1fr);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  min-height: 36px;
+}
+
+.week-allday-label {
+  font-family: var(--font-label);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.week-allday-cell {
+  border-left: 1px solid var(--border);
+  padding: 3px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.week-allday-event {
+  font-size: 11px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  transition: filter var(--transition-fast);
+}
+
+.week-allday-event:hover {
+  filter: brightness(1.2);
+}
+
+/* Week body */
+.week-body {
+  display: grid;
+  grid-template-columns: 56px repeat(7, 1fr);
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+.week-time-gutter-col {
+  position: sticky;
+  left: 0;
+  background: var(--bg-secondary);
+  z-index: 10;
+  border-right: 1px solid var(--border);
+}
+
+.week-hour-label {
+  height: 60px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 2px 6px 0 0;
+  font-size: 10px;
+  font-family: var(--font-label);
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.week-time-gutter {
+  width: 56px;
+  flex-shrink: 0;
+}
+
+/* Day columns */
+.week-day-col {
+  position: relative;
+  border-left: 1px solid var(--border);
+  height: 1440px;  /* 24 * 60px */
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.week-day-col:hover {
+  background: rgba(255,255,255,0.01);
+}
+
+.week-day-col--today {
+  background: rgba(201, 168, 76, 0.02);
+}
+
+.week-hour-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+  pointer-events: none;
+}
+
+/* Events */
+.week-event {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 3px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  z-index: 5;
+}
+
+.week-event:hover {
+  filter: brightness(1.2);
+  z-index: 10;
+  transform: scaleX(1.02);
+}
+
+.week-event--mma {
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.2);
+}
+
+.week-event--direction:not(.week-event--mma) {
+  border-left-width: 4px !important;
+}
+
+.week-event-title {
+  font-size: 11px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.week-event-time {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* Current time line */
+.current-time-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #FF4444;
+  pointer-events: none;
+  z-index: 20;
+  box-shadow: 0 0 6px rgba(255, 68, 68, 0.5);
+}
+
+.current-time-dot {
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #FF4444;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.6);
+}

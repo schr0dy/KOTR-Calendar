@@ -1,0 +1,147 @@
+.event-modal {
+  --event-color: #C9A84C;
+  position: relative;
+  overflow: hidden;
+  max-width: 540px;
+}
+
+.event-modal-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--event-color);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--event-color) 60%, transparent);
+}
+
+.modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.mma-badge {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(201, 168, 76, 0.2);
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.event-dates-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.mma-toggle-row {
+  background: rgba(201, 168, 76, 0.05);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  transition: all var(--transition-fast);
+}
+
+.mma-toggle-row:has(input:checked) {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: rgba(201, 168, 76, 0.4);
+}
+
+.event-team-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+/* Direction team selector */
+.direction-badge {
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  margin-left: 8px;
+  text-transform: none;
+}
+
+.team-select-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.team-select-btn {
+  --t-color: #C9A84C;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+}
+
+.team-select-btn:hover {
+  border-color: var(--t-color);
+  background: color-mix(in srgb, var(--t-color) 8%, transparent);
+  color: var(--text-primary);
+}
+
+.team-select-btn.active {
+  border-color: var(--t-color);
+  background: color-mix(in srgb, var(--t-color) 15%, transparent);
+  color: var(--t-color);
+  font-weight: 600;
+}
+
+.event-readonly-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(255, 189, 46, 0.08);
+  border: 1px solid rgba(255, 189, 46, 0.2);
+  border-radius: var(--radius-md);
+  color: #FFBD2E;
+  font-size: 12px;
+  padding: var(--space-3) var(--space-4);
+}
+
+.confirm-delete-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Datetime-local input styling */
+input[type="datetime-local"],
+input[type="date"] {
+  color-scheme: dark;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) sepia(1) saturate(3) hue-rotate(5deg);
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover,
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}

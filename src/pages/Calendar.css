@@ -1,0 +1,50 @@
+.calendar-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.calendar-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.calendar-main {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* FAB */
+.fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  border: none;
+  color: #0A0A0A;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px var(--gold-glow), 0 2px 8px rgba(0,0,0,0.4);
+  transition: all var(--transition-fast);
+  z-index: 50;
+  animation: pulse-gold 3s ease-in-out infinite;
+}
+
+.fab:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 8px 30px var(--gold-glow), 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.fab:active {
+  transform: scale(0.95) rotate(90deg);
+}
