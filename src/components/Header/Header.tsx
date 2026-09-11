@@ -16,7 +16,7 @@ interface HeaderProps {
 
 function KOTRIcon() {
   return (
-    <img src="/kotr-logo.png" alt="KOTR" className="header-logo-icon" />
+    <img src="./kotr-logo.png" alt="KOTR" className="header-logo-icon" />
   )
 }
 

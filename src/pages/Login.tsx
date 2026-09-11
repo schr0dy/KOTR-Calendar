@@ -40,7 +40,7 @@ export default function Login() {
       <div className="login-card animate-scaleIn">
         <div className="login-logo">
           <img
-            src="/kotr-logo.png"
+            src="./kotr-logo.png"
             alt="King of the Ring"
             className="login-logo-img"
           />
