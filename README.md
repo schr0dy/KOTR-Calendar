@@ -1,38 +1,38 @@
 # KOTR Calendar 🥊
 
-Aplicación de calendario de equipo para **King of the Ring** (MMA).
+Team calendar application for **King of the Ring** (MMA).
 
-## ✨ Características
+## ✨ Features
 
-- 📅 Vistas de calendario: **Mensual, Semanal y Diaria**
-- 👥 **4 equipos**: Direction, Human Resources, Operations, Marketing
-- 🥊 **Eventos MMA** resaltados en dorado
-- 🔐 Sistema de permisos por equipo (Direction puede editar todo)
-- 🔄 Sincronización en tiempo real (Firebase Firestore)
-- 💻 App de escritorio Windows con **actualización automática** vía GitHub Releases
-- 🎨 Diseño negro/dorado King of the Ring
+- 📅 Calendar views: **Monthly, Weekly, and Daily**
+- 👥 **4 teams**: Direction, Human Resources, Operations, Marketing
+- 🥊 **MMA Events** highlighted in gold
+- 🔐 Team-based permission system (Direction can edit everything)
+- 🔄 Real-time synchronization (Firebase Firestore)
+- 💻 Windows desktop app with **automatic updates** via GitHub Releases
+- 🎨 King of the Ring black/gold design
 
-## 🚀 Setup inicial
+## 🚀 Initial Setup
 
-### 1. Configurar Firebase
+### 1. Configure Firebase
 
-1. Ve a [Firebase Console](https://console.firebase.google.com)
-2. Crea un nuevo proyecto
-3. Activa **Authentication** → Email/Password
-4. Activa **Firestore Database** (modo producción)
-5. Ve a Configuración del proyecto → Tus apps → Añadir app web
-6. Copia la configuración
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Create a new project
+3. Enable **Authentication** → Email/Password
+4. Enable **Firestore Database** (production mode)
+5. Go to Project Settings → Your apps → Add web app
+6. Copy the configuration
 
-### 2. Variables de entorno
+### 2. Environment Variables
 
 ```bash
 cp .env.example .env
-# Edita .env con tus valores de Firebase
+# Edit .env with your Firebase values
 ```
 
-### 3. Reglas de seguridad Firestore
+### 3. Firestore Security Rules
 
-En Firebase Console → Firestore → Reglas:
+In Firebase Console → Firestore → Rules:
 
 ```javascript
 rules_version = '2';
@@ -64,54 +64,54 @@ service cloud.firestore {
 }
 ```
 
-### 4. Instalar y ejecutar
+### 4. Install and Run
 
 ```bash
 npm install
 npm run dev
 ```
 
-## 📦 Crear instalador (.exe)
+## 📦 Create Installer (.exe)
 
 ```bash
 npm run build:win
-# El .exe se genera en: release/
+# The .exe is generated in: release/
 ```
 
-## 🔄 Sistema de actualizaciones automáticas
+## 🔄 Automatic Update System
 
-1. Sube el código a un repositorio GitHub
-2. Edita `package.json` → `build.publish.owner` con tu usuario de GitHub
-3. Añade los secretos de Firebase en GitHub → Settings → Secrets:
+1. Upload the code to a GitHub repository
+2. Edit `package.json` → `build.publish.owner` with your GitHub username
+3. Add the Firebase secrets in GitHub → Settings → Secrets and variables → Actions:
    - `VITE_FIREBASE_API_KEY`
    - `VITE_FIREBASE_AUTH_DOMAIN`
    - `VITE_FIREBASE_PROJECT_ID`
    - `VITE_FIREBASE_STORAGE_BUCKET`
    - `VITE_FIREBASE_MESSAGING_SENDER_ID`
    - `VITE_FIREBASE_APP_ID`
-4. Para publicar una nueva versión:
+4. To publish a new version:
    ```bash
    git tag v1.0.1
    git push origin v1.0.1
    ```
-   GitHub Actions compilará el .exe y lo publicará automáticamente.
-5. Los usuarios con la app instalada recibirán la actualización automáticamente.
+   GitHub Actions will automatically build the .exe and publish it.
+5. Users with the app installed will receive the update automatically.
 
-## 👥 Colores por equipo
+## 👥 Team Colors
 
-| Equipo | Color |
+| Team | Color |
 |--------|-------|
-| Direction | 🟡 Dorado (#C9A84C) |
-| Human Resources | 🔵 Azul (#4A9EFF) |
-| Operations | 🟢 Verde (#2ECC8E) |
+| Direction | 🟡 Gold (#C9A84C) |
+| Human Resources | 🔵 Blue (#4A9EFF) |
+| Operations | 🟢 Green (#2ECC8E) |
 | Marketing | 🔴 Coral (#FF6B6B) |
-| Eventos MMA ⭐ | 🟡 Dorado (#C9A84C) |
+| MMA Events ⭐ | 🟡 Gold (#C9A84C) |
 
-## 📝 Crear el primer usuario (Direction/Admin)
+## 📝 Create the First User (Direction/Admin)
 
-El primer usuario debe crearse manualmente desde Firebase Console:
+The first user must be created manually from the Firebase Console:
 1. Firebase Console → Authentication → Users → Add user
-2. Luego en Firestore → Colección `users` → Añadir documento con el UID del usuario:
+2. Then in Firestore → `users` collection → Add document with the user's UID:
    ```json
    {
      "name": "Admin",
@@ -121,4 +121,4 @@ El primer usuario debe crearse manualmente desde Firebase Console:
      "createdAt": <timestamp>
    }
    ```
-3. Desde la app, ese usuario puede crear los demás desde el Panel de Administración.
+3. From the app, that user can create the rest of the users from the Administration Panel.
