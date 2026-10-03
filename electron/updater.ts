@@ -19,10 +19,19 @@ export function setupAutoUpdater(mainWindow: BrowserWindow) {
 
   autoUpdater.on('error', (err) => {
     console.error('Auto-updater error:', err)
+    mainWindow.webContents.send('update:error', err?.message || String(err))
+  })
+
+  autoUpdater.on('update-not-available', () => {
+    mainWindow.webContents.send('update:not-available')
   })
 
   ipcMain.on('update:install', () => {
     autoUpdater.quitAndInstall()
+  })
+
+  ipcMain.on('update:check', () => {
+    autoUpdater.checkForUpdatesAndNotify()
   })
 
   // Check for updates on startup (with delay)

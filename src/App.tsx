@@ -41,6 +41,20 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 }
 
 function AppRoutes() {
+  React.useEffect(() => {
+    const api = (window as any).electronAPI
+    if (!api) return
+
+    api.onUpdateAvailable(() => alert('An update is available! Downloading in background...'))
+    api.onUpdateNotAvailable(() => alert('You are on the latest version.'))
+    api.onUpdateDownloaded(() => {
+      if (confirm('Update downloaded! Restart to install now?')) {
+        api.installUpdate()
+      }
+    })
+    api.onUpdateError((err: string) => alert('Error checking for updates: ' + err))
+  }, [])
+
   return (
     <HashRouter>
       <Routes>

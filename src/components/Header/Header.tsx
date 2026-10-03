@@ -184,6 +184,19 @@ export default function Header({
                   </svg>
                   Settings
                 </button>
+                <button className="user-menu-item" onClick={() => {
+                  const api = (window as any).electronAPI;
+                  if (api?.checkForUpdates) {
+                    api.checkForUpdates();
+                  } else {
+                    alert('Updater not available.');
+                  }
+                }} id="update-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/>
+                  </svg>
+                  Check for Updates
+                </button>
                 <button className="user-menu-item user-menu-item--danger" onClick={handleLogout} id="logout-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
