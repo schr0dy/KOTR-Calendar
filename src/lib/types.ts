@@ -45,3 +45,51 @@ export const TEAM_BG_COLORS: Record<Team, string> = {
   operations: 'rgba(46, 204, 142, 0.12)',
   marketing: 'rgba(255, 107, 107, 0.12)',
 }
+
+// --- Rankings ----------------------------------------------------------------
+
+export type FightResult = 'win' | 'loss' | 'draw'
+
+export const FIGHT_METHODS = [
+  'KO', 'TKO', 'Submission', 'Decision (Unanimous)', 'Decision (Split)',
+  'Decision (Majority)', 'Technical Decision', 'DQ', 'Corner Stoppage', 'Doctor Stoppage', 'No Contest', 'Other',
+] as const
+
+export interface Fight {
+  id: string
+  opponent: string
+  result: FightResult
+  categoryId: string  // category the fight was fought in
+  opponentId: string  // linked fighter (empty for legacy free-text opponents)
+  method: string
+  date: string      // yyyy-MM-dd (optional, may be empty)
+  event: string
+  round: string
+  notes: string
+}
+
+export interface WeightCategory {
+  id: string
+  name: string
+  championId: string
+  createdAt: Date
+}
+
+export interface Fighter {
+  id: string
+  categoryIds: string[]
+  firstName: string
+  lastName: string
+  nickname: string
+  age: string
+  height: string     // cm
+  reach: string      // cm
+  weight: string     // kg
+  stance: string
+  nationality: string
+  team: string
+  photo: string      // small data URL
+  notes: string
+  fights: Fight[]
+  createdAt: Date
+}

@@ -3,6 +3,8 @@ import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import Login from './pages/Login'
 import CalendarPage from './pages/Calendar'
+import RankingsPage from './pages/Rankings'
+import FightersPage from './pages/Fighters'
 import './styles/globals.css'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -55,6 +57,22 @@ function AppRoutes() {
           element={
             <ProtectedRoute>
               <CalendarPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/rankings"
+          element={
+            <ProtectedRoute>
+              <RankingsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/fighters"
+          element={
+            <ProtectedRoute>
+              <FightersPage />
             </ProtectedRoute>
           }
         />

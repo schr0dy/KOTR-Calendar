@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { logout } from '../../lib/auth'
 import { useAuth } from '../../contexts/AuthContext'
 import { TEAM_LABELS, TEAM_COLORS } from '../../lib/types'
@@ -72,6 +73,7 @@ export default function Header({
 }: HeaderProps) {
   const { userProfile } = useAuth()
   const [showUserMenu, setShowUserMenu] = useState(false)
+  const navigate = useNavigate()
 
   const teamColor = userProfile ? TEAM_COLORS[userProfile.team] : '#C9A84C'
   const teamLabel = userProfile ? TEAM_LABELS[userProfile.team] : ''
@@ -123,6 +125,18 @@ export default function Header({
       </div>
 
       <div className="header-right">
+        <button className="btn btn-outline btn-sm" onClick={() => navigate('/fighters')} id="fighters-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          Fighters
+        </button>
+        <button className="btn btn-outline btn-sm" onClick={() => navigate('/rankings')} id="rankings-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>
+          </svg>
+          Rankings
+        </button>
         {userProfile?.team === 'direction' && onAdminClick && (
           <button className="btn btn-outline btn-sm" onClick={onAdminClick} id="admin-panel-btn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
